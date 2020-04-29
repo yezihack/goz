@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/idoubi/goz"
+	"github.com/yezihack/goz"
 )
 
 func ExampleRequest_Get() {

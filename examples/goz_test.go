@@ -3,7 +3,7 @@ package goz
 import (
 	"fmt"
 
-	"github.com/idoubi/goz"
+	"github.com/yezihack/goz"
 )
 
 func ExampleNewClient() {
