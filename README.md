@@ -2,6 +2,9 @@
 
 A fantastic HTTP request library used in golang. Inspired by [guzzle](https://github.com/guzzle/guzzle)
 
+## FIX
+- Options FormParams, Headers support any type.
+
 ## Installation
 
 ```

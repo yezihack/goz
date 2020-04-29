@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"errors"
+	"github.com/spf13/cast"
 	"io"
 	"net/http"
 	"net/url"
@@ -180,14 +181,14 @@ func (r *Request) parseCookies() {
 func (r *Request) parseHeaders() {
 	if r.opts.Headers != nil {
 		for k, v := range r.opts.Headers {
-			if vv, ok := v.(string); ok {
-				r.req.Header.Set(k, vv)
-				continue
-			}
-			if vv, ok := v.([]string); ok {
+			switch v.(type) {
+			case []interface{}:
+				vv := cast.ToStringSlice(v)
 				for _, vvv := range vv {
 					r.req.Header.Add(k, vvv)
 				}
+			case interface{}:
+				r.req.Header.Add(k, cast.ToString(v))
 			}
 		}
 	}
@@ -198,13 +199,14 @@ func (r *Request) parseBody() {
 	if r.opts.FormParams != nil {
 		values := url.Values{}
 		for k, v := range r.opts.FormParams {
-			if vv, ok := v.(string); ok {
-				values.Set(k, vv)
-			}
-			if vv, ok := v.([]string); ok {
+			switch v.(type) {
+			case []interface{}:
+				vv := cast.ToStringSlice(v)
 				for _, vvv := range vv {
-					values.Add(k, vvv)
+					values.Set(k, vvv)
 				}
+			case interface{}:
+				values.Set(k, cast.ToString(v))
 			}
 		}
 		r.body = strings.NewReader(values.Encode())
