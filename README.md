@@ -24,7 +24,7 @@ https://godoc.org/github.com/idoubi/goz
 package main
 
 import (
-    "github.com/idoubi/goz"
+    "github.com/yezihack/goz"
 )
 
 func main() {

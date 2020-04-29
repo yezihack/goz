@@ -1,0 +1,17 @@
+language: go
+go:
+  - 1.14
+
+sudo: required
+
+os:
+  - linux
+  - osx
+
+install:
+  - echo "install"
+  - go get -u github.com/go-bindata/go-bindata/...
+
+script:
+  - echo "script"
+  - make dev

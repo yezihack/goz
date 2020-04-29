@@ -30,6 +30,10 @@ func (r ResponseBody) Read(length int) []byte {
 
 	return r[:length]
 }
+// Read all response byte
+func (r ResponseBody) Byte() []byte {
+	return r
+}
 
 // GetContents format response body as string
 func (r ResponseBody) GetContents() string {
