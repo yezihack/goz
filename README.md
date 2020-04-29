@@ -8,7 +8,7 @@ A fantastic HTTP request library used in golang. Inspired by [guzzle](https://gi
 ## Installation
 
 ```
-go get -u github.com/idoubi/goz
+go get -u github.com/yezihack/goz
 ```
 
 
