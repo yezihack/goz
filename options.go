@@ -5,7 +5,7 @@ import "time"
 // Options object
 type Options struct {
 	BaseURI    string
-	Timeout    float32
+	Timeout    time.Duration
 	timeout    time.Duration
 	Query      interface{}
 	Headers    map[string]interface{}

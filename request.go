@@ -112,9 +112,9 @@ func (r *Request) Request(method, uri string, opts ...Options) (*Response, error
 func (r *Request) parseOptions() {
 	// default timeout 30s
 	if r.opts.Timeout == 0 {
-		r.opts.Timeout = 30
+		r.opts.Timeout = time.Second * 30
 	}
-	r.opts.timeout = time.Duration(r.opts.Timeout*1000) * time.Millisecond
+	r.opts.timeout = r.opts.Timeout
 }
 
 func (r *Request) parseClient() {
