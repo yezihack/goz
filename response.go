@@ -47,13 +47,10 @@ func (r *Response) GetRequest() *http.Request {
 
 // GetBody parse response body
 func (r *Response) GetBody() (ResponseBody, error) {
-	defer r.resp.Body.Close()
-
 	body, err := ioutil.ReadAll(r.resp.Body)
 	if err != nil {
 		return nil, err
 	}
-
 	return ResponseBody(body), nil
 }
 

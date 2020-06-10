@@ -95,17 +95,15 @@ func (r *Request) Request(method, uri string, opts ...Options) (*Response, error
 	r.parseCookies()
 
 	_resp, err := r.cli.Do(r.req)
-
 	resp := &Response{
 		resp: _resp,
 		req:  r.req,
 		err:  err,
 	}
-
 	if err != nil {
 		return resp, err
 	}
-
+	defer _resp.Body.Close()
 	return resp, nil
 }
 
